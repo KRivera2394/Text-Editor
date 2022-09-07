@@ -1,7 +1,7 @@
-const HtmlWebpackPlugin = require('html-webpack-plugin');
 const WebpackPwaManifest = require('webpack-pwa-manifest');
-const path = require('path');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 const { InjectManifest } = require('workbox-webpack-plugin');
+const path = require('path');
 
 module.exports = () => {
   return {
@@ -9,25 +9,24 @@ module.exports = () => {
     entry: {
       main: './src/js/index.js',
       install: './src/js/install.js',
-      //database: './src/js/database.js'
+      
     },
     output: {
       filename: '[name].bundle.js',
       path: path.resolve(__dirname, 'dist'),
     },
     plugins: [
-      // Adding Webpack plugin to generate HTML and inject our bundles
+     
       new HtmlWebpackPlugin({
         template: './index.html',
-        title: 'JATE'
+        title: 'jatee'
       }),
-      // TODO: Add and configure workbox plugins for a service worker and manifest file.
-      // service worker
+      
       new InjectManifest({
         swSrc: './src-sw.js',
         swDest: 'src-sw.js',
       }),
-      // manifest.json
+      
       new WebpackPwaManifest({
         fingerprints: false,
         inject: true,
@@ -49,7 +48,7 @@ module.exports = () => {
     ],
 
     module: {
-      // TODO: Add CSS loaders and babel to webpack.
+     
       rules: [
         {
           test: /\.css$/i,
